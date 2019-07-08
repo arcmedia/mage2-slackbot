@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="arcmedia" translate="label" sortOrder="10">
+            <label>Arcmedia</label>
+        </tab>
+        <section id="arcmedia_slackbot" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Slackbot</label>
+            <tab>arcmedia</tab>
+            <resource>Arcmedia_Slackbot::arcmedia_slackbot</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use this Extension</comment>
+                </field>
+                <field id="url" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Slack Channel Hook URL</label>
+                    <comment><![CDATA[Choose a Channel from <a href="https://arcmedia.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks" target="_blank">Slack Incoming Webhooks</a> and past the URL here]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
