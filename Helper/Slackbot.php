@@ -8,7 +8,7 @@ class Slackbot extends AbstractHelper
 {
     protected $botName = "SlackBot";
     protected $botIcon = "https://www.akeneo.com/wp-content/uploads/2013/09/icon-magento.png";
-    protected $webhook = slack_webhook_url; //define a slack webhook in your project
+    protected $webhook = false; //define a slack webhook in your project
     
     
     CONST ENABLE = 'arcmedia_slackbot/general/enable';
@@ -30,7 +30,7 @@ class Slackbot extends AbstractHelper
         if ($webhookConfig) {
             return $webhookConfig;
         }
-        return $this->webhook;
+        return false;
     }
     
     public function send(string $text)
@@ -55,7 +55,10 @@ class Slackbot extends AbstractHelper
             ),
         );
         $context = stream_context_create($options);
-        file_get_contents($this->getWebhook(), false, $context);
+        $webhook = $this->getWebhook();
+        if ($webhook) {
+            file_get_contents($webhook, false, $context);
+        }
     }
     
 }
